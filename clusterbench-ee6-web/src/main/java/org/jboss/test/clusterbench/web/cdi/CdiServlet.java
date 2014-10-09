@@ -42,7 +42,7 @@ public class CdiServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/plain");
-
+        System.out.println("==cdi request=======");
         int serial = bean.getSerial();
 
         // Readonly?

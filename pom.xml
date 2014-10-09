@@ -40,9 +40,6 @@
     <profiles>
         <profile>
             <id>ee7</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
             <modules>
                 <module>clusterbench-ee7-ear</module>
                 <module>clusterbench-ee7-web</module>
@@ -51,6 +48,9 @@
         </profile>
         <profile>
             <id>ee6</id>
+			<activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
             <modules>
                 <module>clusterbench-ee6-ear</module>
                 <module>clusterbench-ee6-ear-passivating</module>
@@ -58,6 +58,21 @@
                 <module>clusterbench-ee6-web-granular</module>
                 <module>clusterbench-ee6-ejb</module>
             </modules>
+            <build>
+                <pluginManagement>
+                    <plugins>
+                        <plugin>
+                            <groupId>org.jboss.as.plugins</groupId>
+                            <artifactId>jboss-as-maven-plugin</artifactId>
+                            <version>7.4.Final</version>
+                            <inherited>true</inherited>
+                            <configuration>
+                                <skip>true</skip>
+                            </configuration>
+                        </plugin>
+                    </plugins>
+                </pluginManagement>
+            </build>
         </profile>
         <profile>
             <id>ee5</id>
@@ -66,6 +81,48 @@
                 <module>clusterbench-ee5-web</module>
                 <module>clusterbench-ee5-ejb</module>
             </modules>
+        </profile>
+        <profile>
+            <id>raos-1</id>
+            <build>
+                <pluginManagement>
+                    <plugins>
+                        <plugin>
+                            <groupId>org.jboss.as.plugins</groupId>
+                            <artifactId>jboss-as-maven-plugin</artifactId>
+                            <version>7.4.Final</version>
+                            <inherited>true</inherited>
+                            <configuration>
+                                <hostname>japp-uat-001</hostname>
+                                <username>jboss</username>
+                                <password>password</password>
+                                <skip>true</skip>
+                            </configuration>
+                        </plugin>
+                    </plugins>
+                </pluginManagement>
+            </build>
+        </profile>
+		<profile>
+            <id>raos-2</id>
+            <build>
+                <pluginManagement>
+                    <plugins>
+                        <plugin>
+                            <groupId>org.jboss.as.plugins</groupId>
+                            <artifactId>jboss-as-maven-plugin</artifactId>
+                            <version>7.4.Final</version>
+                            <inherited>true</inherited>
+                            <configuration>
+                                <hostname>japp-uat-002</hostname>
+                                <username>jboss</username>
+                                <password>password</password>
+                                <skip>true</skip>
+                            </configuration>
+                        </plugin>
+                    </plugins>
+                </pluginManagement>
+            </build>
         </profile>
     </profiles>
 
@@ -119,6 +176,12 @@
     </build>
 
     <repositories>
+         <repository> 
+            <id>prime-repo</id>  
+            <name>PrimeFaces Maven Repository</name>  
+            <url>http://repository.primefaces.org</url>  
+            <layout>default</layout>  
+         </repository>
         <repository>
             <id>jboss-public-nexus</id>
             <name>JBoss Public Nexus Repository</name>

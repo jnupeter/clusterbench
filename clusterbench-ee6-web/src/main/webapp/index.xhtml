@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>ClusterBench</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link rel="shortcut icon" href="favicon.ico" />
+    </h:head>
+    <h:body>
+         <h1>Hello World, Hello ClusterBench!</h1>
+        <h2>Flavor</h2>
+        <p>EE6</p>
+
+        <h2>Usage</h2>
+        <ul>
+            <h:form>
+             <li><h:commandLink value="Show data" action="#{createApplication.editApplication(2015)}" /></li>
+             </h:form>
+            <li><strong>JsfManagedBean</strong> <a href="faces/jsfmanaged.xhtml">/faces/jsfmanaged.xhtml</a></li>
+            <li><strong>CdiServlet</strong> <a href="cdi">/cdi</a></li>
+            <li><strong>LocalEjbServlet</strong> <a href="ejbservlet">/ejbservlet</a></li>
+            <li><strong>LocalSingletonEjbServlet</strong> <a href="singletonejbservlet">/singletonejbservlet</a></li>
+            <li><strong>HttpSessionServlet</strong> <a href="session">/session</a></li>
+        </ul>
+
+        <p:commandButton value="Logout"/>
+        <h2>Sources</h2>
+        <p>
+            <a href="https://github.com/clusterbench/clusterbench">https://github.com/clusterbench/clusterbench</a>
+        </p>
+    </h:body>
+</html>

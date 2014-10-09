@@ -1,0 +1,13 @@
+# Configure the 'customer-policy' security domain if it doesn't exist
+if ( outcome != success ) of /subsystem=security/security-domain=jboss-cluster-test-policy:read-resource
+/subsystem=security/security-domain=jboss-cluster-test-policy/:add(cache-type=default)
+/subsystem=security/security-domain=jboss-cluster-test-policy/authentication=classic:add( \
+                                                 login-modules=[{"code"=>"org.jboss.security.auth.spi.IdentityLoginModule", \
+												                 "flag"=>"required", \
+																 "module-options"=>[("principal"=>"peter"), \
+																                    ("roles"=>"CUSTOMERS-QTAC") \
+																				   ] \
+															    }])
+end-if
+
+:reload

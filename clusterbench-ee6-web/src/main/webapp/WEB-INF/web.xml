@@ -24,9 +24,49 @@
         <session-timeout>5</session-timeout> <!-- minutes -->
     </session-config>
     
+    <context-param>
+        <param-name>primefaces.THEME</param-name>
+        <param-value>bootstrap</param-value>
+    </context-param>
+    
+    <security-constraint>
+        <display-name>public facing pages</display-name>
+        <web-resource-collection>
+            <web-resource-name>PagesNotRequireLogin</web-resource-name>
+            <description>Pages that do not require log in</description>
+            <url-pattern>/login.xhtml</url-pattern>
+            <url-pattern>/javax.faces.resource/*</url-pattern>
+        </web-resource-collection>
+    </security-constraint>
+    <!--require login-->
+    <security-constraint>
+        <display-name>Customers Security Constraint</display-name>
+        <web-resource-collection>
+            <web-resource-name>GlobalSecurityConstraint</web-resource-name>
+            <description/>
+            <url-pattern>*.xhtml</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <description/>
+            <role-name>CUSTOMERS-QTAC</role-name>
+        </auth-constraint>
+    </security-constraint>
+    <login-config>
+        <auth-method>FORM</auth-method>
+        <realm-name>customer-realm</realm-name>
+        <form-login-config>
+            <form-login-page>/login.xhtml</form-login-page>
+            <form-error-page>/failed.xhtml</form-error-page>
+        </form-login-config>
+    </login-config>
+    <security-role>
+        <description/>
+        <role-name>CUSTOMERS-QTAC</role-name>
+    </security-role>
+    
     <!-- Welcome page with links to test scenarios -->
     <welcome-file-list>
-        <welcome-file>index.html</welcome-file>
+        <welcome-file>login.xhtml</welcome-file>
     </welcome-file-list>
     
     <!-- JSF Section -->
@@ -44,7 +84,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
-        <url-pattern>/faces/*</url-pattern>
+        <url-pattern>*.xhtml</url-pattern>
     </servlet-mapping>
     <context-param>
         <param-name>javax.faces.STATE_SAVING_METHOD</param-name>

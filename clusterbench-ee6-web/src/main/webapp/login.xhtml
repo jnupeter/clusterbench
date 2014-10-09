@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Welcome to our system</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <p:focus />
+            <p:growl id="result" />
+            <p:panel header="Login">
+                <p:panelGrid columns="3">
+                    <p:outputLabel for="username" value="Username" />
+                    <p:inputText id="username" value="#{loginBean.userName}" required="true" requiredMessage="This field is mandatory."/>
+                    <p:message for="username" />
+                    
+                    <p:outputLabel for="password" value="Password" />
+                    <p:password id="password" value="#{loginBean.password}" required="true" requiredMessage="Ths field is mandatory." />
+                    <p:message for="password" />
+                </p:panelGrid>
+                <f:facet name="footer">
+                    <p:commandButton id="btnCancel" style="float: left;" process="@this" value="Cancel" update="@form"><p:resetInput target="username password" /></p:commandButton>
+                    <p:commandButton id="btnLogin" style="float: right;" value="Login" action="#{loginBean.login}"/>
+                </f:facet>
+            </p:panel>
+        </h:form>
+    </h:body>
+</html>
+

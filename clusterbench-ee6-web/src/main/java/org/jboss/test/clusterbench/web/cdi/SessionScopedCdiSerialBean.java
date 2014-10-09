@@ -17,9 +17,15 @@
 package org.jboss.test.clusterbench.web.cdi;
 
 import java.io.Serializable;
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 import org.jboss.test.clusterbench.common.SerialBean;
 
 @SessionScoped
 public class SessionScopedCdiSerialBean extends SerialBean implements Serializable {
+    
+    @PostConstruct
+    public void init() {
+        System.out.println("....SessionScopedCdiSerialBean is created....");
+    }
 }
